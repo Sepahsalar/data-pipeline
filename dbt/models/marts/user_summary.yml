@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: user_summary
+    description: "Summary of users grouped by age category."
+
+    columns:
+      - name: age_group
+        description: "User age category."
+        tests:
+          - unique
+          - not_null
+
+      - name: number_of_users
+        description: "Number of users in each age group."
+        tests:
+          - not_null
+
+      - name: average_age
+        description: "Average age in each age group."
+        tests:
+          - not_null

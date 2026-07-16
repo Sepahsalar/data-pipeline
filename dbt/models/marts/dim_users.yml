@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: dim_users
+    description: "Business-ready user dimension used by reporting and downstream marts."
+
+    columns:
+      - name: id
+        description: "Unique user identifier."
+        tests:
+          - unique
+          - not_null
+
+      - name: name
+        description: "User name."
+        tests:
+          - not_null
+
+      - name: age
+        description: "User age."
+        tests:
+          - not_null
+
+      - name: age_group
+        description: "User age category."
+        tests:
+          - not_null
+
+      - name: is_adult
+        description: "Whether the user is at least 18 years old."

@@ -1,0 +1,19 @@
+version: 2
+
+macros:
+  - name: generate_schema_name
+    description: >
+      Overrides dbt's default schema generation behavior.
+      This macro uses the schema configured in each model
+      (RAW, STAGING, MART) instead of creating schemas
+      prefixed with the target schema.
+
+    arguments:
+      - name: custom_schema_name
+        type: string
+        description: >
+          The schema configured in the model.
+
+      - name: node
+        description: >
+          The dbt node currently being compiled.

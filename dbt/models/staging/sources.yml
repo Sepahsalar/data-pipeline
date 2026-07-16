@@ -1,0 +1,28 @@
+version: 2
+
+sources:
+  - name: raw
+    description: "Raw data loaded into Snowflake from the Python ETL pipeline."
+
+    database: DATA_PIPELINE
+    schema: RAW
+
+    tables:
+      - name: users_raw
+        description: "Raw user data loaded from the cleaned CSV."
+
+        columns:
+          - name: id
+            description: "Unique identifier."
+
+          - name: name
+            description: "User name."
+
+          - name: age
+            description: "User age."
+
+          - name: age_group
+            description: "Age category created during the Python transformation."
+
+          - name: load_date
+            description: "Timestamp when the row was inserted into Snowflake."

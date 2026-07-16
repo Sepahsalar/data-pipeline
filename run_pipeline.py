@@ -1,12 +1,12 @@
 import logging
 
-from src.logger import configure_logging
-from src.config import Config
+from src.common.logger import configure_logging
+from src.common.config import Config
 
-from src.ingest import ingest_data
-from src.transform import transform_users
-from src.upload import upload_to_s3
-from scripts.load_to_snowflake import load_users
+from src.etl.ingest import ingest_data
+from src.etl.transform import transform_users
+from src.etl.upload import upload_to_s3
+from src.warehouse.load_to_snowflake import load_users
 
 logger = logging.getLogger("pipeline")
 
