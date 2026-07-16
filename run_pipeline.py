@@ -4,7 +4,7 @@ from src.common.logger import configure_logging
 from src.common.config import Config
 
 from src.etl.ingest import ingest_data
-from src.etl.transform import transform_users
+from src.etl.transform import transform_file
 from src.etl.upload import upload_to_s3
 from src.warehouse.load_to_snowflake import load_users
 
@@ -21,7 +21,7 @@ def main():
 		Config.RAW_INGESTED_FILE,
 	)
 
-	transform_users(
+	transform_file(
 		Config.RAW_INGESTED_FILE,
 		Config.CLEANED_FILE,
 	)
