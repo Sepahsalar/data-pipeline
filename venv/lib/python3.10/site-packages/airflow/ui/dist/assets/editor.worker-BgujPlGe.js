@@ -1,1 +1,0 @@
-var e=``+new URL(`editor.worker--Ol_5jsL.js`,import.meta.url).href;export{e as default};
