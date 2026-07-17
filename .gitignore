@@ -221,3 +221,7 @@ logs/
 *.log
 
 .python-version
+airflow_venv/
+dbt/target/
+dbt/logs/
+dbt/dbt_packages/
