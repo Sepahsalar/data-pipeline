@@ -3,6 +3,8 @@ from pathlib import Path
 
 
 def configure_logging():
+	"""Configure application logging."""
+
 	if logging.getLogger().handlers:
 		return
 
@@ -10,8 +12,11 @@ def configure_logging():
 	logging.getLogger("boto3").setLevel(logging.WARNING)
 	logging.getLogger("snowflake").setLevel(logging.WARNING)
 	logging.getLogger("urllib3").setLevel(logging.WARNING)
-	
-	log_dir = Path(__file__).resolve().parent.parent / "logs"
+
+	# Project root
+	project_root = Path(__file__).resolve().parent.parent.parent
+
+	log_dir = project_root / "logs"
 	log_dir.mkdir(exist_ok=True)
 
 	log_file = log_dir / "pipeline.log"

@@ -1,4 +1,3 @@
-from datetime import datetime
 import boto3
 import logging
 from datetime import datetime
