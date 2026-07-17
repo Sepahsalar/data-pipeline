@@ -7,15 +7,20 @@ models:
     columns:
       - name: id
         description: "Unique user identifier."
-
-      - name: name
-        description: "User name."
+        tests:
+          - unique
+          - not_null
 
       - name: age
         description: "User age."
+        tests:
+          - not_null
 
       - name: age_group
         description: "Categorized age group."
-
-      - name: load_date
-        description: "Timestamp of ingestion."
+        tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - young
+                  - adult

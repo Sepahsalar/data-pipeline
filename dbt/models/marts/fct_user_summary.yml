@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: user_summary
+  - name: fct_user_summary
     description: "Summary of users grouped by age category."
 
     columns:
