@@ -37,21 +37,23 @@ coverage:
 	python -m pytest --cov=src
 
 dbt-run:
-	cd dbt && dbt run
+	cd dbt && dbt run --profiles-dir .
 
 dbt-test:
-	cd dbt && dbt test
+	cd dbt && dbt test --profiles-dir .
 
 check: test dbt-test
 	@echo "All checks passed."
 
 docs:
-	cd dbt && dbt docs generate
+	cd dbt && dbt docs generate --profiles-dir .
 
 serve:
-	cd dbt && dbt docs serve
+	cd dbt && dbt docs serve --profiles-dir .
 
 clean:
 	find . -type d -name "__pycache__" -exec rm -rf {} +
 	find . -type f -name "*.pyc" -delete
 	rm -rf dbt/target
+	rm -rf dbt/dbt_packages
+	rm -rf dbt/logs
