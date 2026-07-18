@@ -16,10 +16,10 @@ help:
 	@echo "  make clean"
 
 install:
-	python -m pip install -r requirements.txt
+	python -m pip install -r requirements/etl.txt
 
 install-dev:
-	python -m pip install -r requirements-dev.txt
+	python -m pip install -r requirements/dev.txt
 
 venv-check:
 	@python --version
