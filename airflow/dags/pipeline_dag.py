@@ -1,4 +1,15 @@
-from datetime import datetime, timedelta
+import os
+import sys
+import pendulum
+
+PROJECT_ROOT = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), "..", "..")
+)
+
+if PROJECT_ROOT not in sys.path:
+    sys.path.insert(0, PROJECT_ROOT)
+
+from datetime import timedelta
 
 from airflow.decorators import dag, task
 
@@ -43,6 +54,7 @@ def upload():
 def snowflake():
     load_users(
         Config.CLEANED_FILE,
+        Config.SNOWFLAKE_TABLE,
     )
 
 
@@ -50,7 +62,7 @@ def snowflake():
     dag_id="data_pipeline",
     description="End-to-end ETL pipeline from CSV to Snowflake",
     default_args=default_args,
-    start_date=datetime(2026, 1, 1),
+    start_date=pendulum.datetime(2026, 1, 1, tz="UTC"),
     schedule=None,
     catchup=False,
     tags=["portfolio", "etl"],
