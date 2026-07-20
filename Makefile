@@ -1,4 +1,4 @@
-.PHONY: help install install-dev venv-check pipeline run test coverage dbt-run dbt-test check docs serve clean
+.PHONY: help install install-dev venv-check pipeline reset-data run test coverage dbt-run dbt-test check docs serve clean
 
 help:
 	@echo "Available commands:"
@@ -6,6 +6,7 @@ help:
 	@echo "  make install-dev"
 	@echo "  make venv-check"
 	@echo "  make pipeline"
+	@echo "  make reset-data"
 	@echo "  make test"
 	@echo "  make coverage"
 	@echo "  make dbt-run"
@@ -27,8 +28,11 @@ venv-check:
 	@which pip
 	@which pytest
 
-pipeline:
+pipeline: reset-data
 	python run_pipeline.py
+
+reset-data:
+	rm -f data/users_*
 
 test:
 	python -m pytest
@@ -57,4 +61,3 @@ clean:
 	rm -rf dbt/target
 	rm -rf dbt/dbt_packages
 	rm -rf dbt/logs
-	rm -rf data/users_*
