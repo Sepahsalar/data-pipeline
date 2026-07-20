@@ -57,3 +57,4 @@ clean:
 	rm -rf dbt/target
 	rm -rf dbt/dbt_packages
 	rm -rf dbt/logs
+	rm -rf data/users_*
