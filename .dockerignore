@@ -1,0 +1,54 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Virtual environments
+venv/
+.venv/
+airflow_venv/
+
+# Environment variables
+.env
+.env.*
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Logs
+logs/
+airflow/logs/
+
+# dbt artifacts
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+dbt/.user.yml
+
+# Python build artifacts
+build/
+dist/
+*.egg-info/
+
+# Local caches
+.cache/
+.mypy_cache/
+
+# Terraform (future-proof)
+.terraform/
+
+# Docker
+docker-compose.override.yml
+
+.python-version

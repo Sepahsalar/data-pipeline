@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 
 from dotenv import load_dotenv
 
@@ -17,9 +18,10 @@ class Config:
 	# Snowflake
 	SNOWFLAKE_USER = os.getenv("SNOWFLAKE_USER")
 	SNOWFLAKE_ACCOUNT = os.getenv("SNOWFLAKE_ACCOUNT")
-	SNOWFLAKE_PRIVATE_KEY = os.getenv(
-		"SNOWFLAKE_PRIVATE_KEY",
-		os.path.expanduser("~/.snowflake/rsa_key.p8"),
+	SNOWFLAKE_PRIVATE_KEY = str(
+	    Path(
+	        os.getenv("SNOWFLAKE_PRIVATE_KEY", "~/.snowflake/rsa_key.p8")
+	    ).expanduser()
 	)
 	SNOWFLAKE_WAREHOUSE = os.getenv("SNOWFLAKE_WAREHOUSE")
 	SNOWFLAKE_DATABASE = os.getenv("SNOWFLAKE_DATABASE")

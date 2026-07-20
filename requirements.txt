@@ -1,4 +1,0 @@
-boto3==1.43.42
-cryptography==49.0.0
-python-dotenv==1.2.2
-snowflake-connector-python==4.6.0
