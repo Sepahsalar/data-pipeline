@@ -28,7 +28,7 @@ venv-check:
 	@which pip
 	@which pytest
 
-pipeline: reset-data
+pipeline:
 	python run_pipeline.py
 
 reset-data:
@@ -61,3 +61,4 @@ clean:
 	rm -rf dbt/target
 	rm -rf dbt/dbt_packages
 	rm -rf dbt/logs
+	rm -f data/users_*
