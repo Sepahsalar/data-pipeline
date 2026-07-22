@@ -1,8 +1,8 @@
 import logging
-import os
 
 from src.common.logger import configure_logging
 from src.common.config import Config
+from src.common.cleanup import cleanup_generated_files
 
 from src.etl.ingest import ingest_data
 from src.etl.transform import transform_file
@@ -10,15 +10,6 @@ from src.etl.upload import upload_to_s3
 from src.warehouse.load_to_snowflake import load_users
 
 logger = logging.getLogger("pipeline")
-
-
-def cleanup_generated_files():
-	"""Remove generated files from previous pipeline runs."""
-	for file_path in [Config.RAW_INGESTED_FILE, Config.CLEANED_FILE]:
-		if os.path.exists(file_path):
-			os.remove(file_path)
-			logger.info("Removed old generated file: %s", file_path)
-
 
 
 # Orchestrates the complete ETL pipeline.

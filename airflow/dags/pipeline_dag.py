@@ -1,7 +1,16 @@
+from datetime import timedelta
 import os
 import sys
+
 import pendulum
-from run_pipeline import cleanup_generated_files
+from airflow.decorators import dag, task
+
+from src.common.cleanup import cleanup_generated_files
+from src.common.config import Config
+from src.etl.ingest import ingest_data
+from src.etl.transform import transform_file
+from src.etl.upload import upload_to_s3
+from src.warehouse.load_to_snowflake import load_users
 
 PROJECT_ROOT = os.path.abspath(
 	os.path.join(os.path.dirname(__file__), "..", "..")
@@ -9,16 +18,6 @@ PROJECT_ROOT = os.path.abspath(
 
 if PROJECT_ROOT not in sys.path:
 	sys.path.insert(0, PROJECT_ROOT)
-
-from datetime import timedelta
-
-from airflow.decorators import dag, task
-
-from src.etl.ingest import ingest_data
-from src.etl.transform import transform_file
-from src.etl.upload import upload_to_s3
-from src.warehouse.load_to_snowflake import load_users
-from src.common.config import Config
 
 default_args = {
 	"owner": "Alireza",
