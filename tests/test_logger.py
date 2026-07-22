@@ -37,18 +37,25 @@ def test_root_logger_has_handlers():
 
 
 def test_file_handler_is_configured_when_present():
-	"""If logging is configured by this application, a FileHandler should point to pipeline.log."""
+    """If this application configures logging, it should register a FileHandler for pipeline.log."""
 
-	configure_logging()
+    configure_logging()
 
-	file_handlers = [
-		handler
-		for handler in logging.getLogger().handlers
-		if isinstance(handler, logging.FileHandler)
-	]
+    root_logger = logging.getLogger()
 
-	if file_handlers:
-		assert any(handler.baseFilename.endswith("pipeline.log") for handler in file_handlers)
+    if root_logger.handlers and not any(
+        isinstance(handler, logging.FileHandler)
+        for handler in root_logger.handlers
+    ):
+        return
+
+    file_handlers = [
+        handler
+        for handler in root_logger.handlers
+        if isinstance(handler, logging.FileHandler)
+    ]
+
+    assert any(handler.baseFilename.endswith("pipeline.log") for handler in file_handlers)
 
 
 def test_can_write_log_message():
