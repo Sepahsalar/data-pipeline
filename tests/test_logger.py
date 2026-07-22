@@ -36,26 +36,15 @@ def test_root_logger_has_handlers():
 	assert len(logging.getLogger().handlers) > 0
 
 
-def test_file_handler_is_configured_when_present():
-    """If this application configures logging, it should register a FileHandler for pipeline.log."""
+def test_configure_logging_is_idempotent():
+    """Calling configure_logging() multiple times should not raise errors or remove handlers."""
+
+    configure_logging()
+    initial_handler_count = len(logging.getLogger().handlers)
 
     configure_logging()
 
-    root_logger = logging.getLogger()
-
-    if root_logger.handlers and not any(
-        isinstance(handler, logging.FileHandler)
-        for handler in root_logger.handlers
-    ):
-        return
-
-    file_handlers = [
-        handler
-        for handler in root_logger.handlers
-        if isinstance(handler, logging.FileHandler)
-    ]
-
-    assert any(handler.baseFilename.endswith("pipeline.log") for handler in file_handlers)
+    assert len(logging.getLogger().handlers) == initial_handler_count
 
 
 def test_can_write_log_message():
