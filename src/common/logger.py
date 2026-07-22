@@ -5,9 +5,6 @@ from pathlib import Path
 def configure_logging():
 	"""Configure application logging."""
 
-	if logging.getLogger().handlers:
-		return
-
 	logging.getLogger("botocore").setLevel(logging.WARNING)
 	logging.getLogger("boto3").setLevel(logging.WARNING)
 	logging.getLogger("snowflake").setLevel(logging.WARNING)
@@ -20,6 +17,9 @@ def configure_logging():
 	log_dir.mkdir(exist_ok=True)
 
 	log_file = log_dir / "pipeline.log"
+
+	if logging.getLogger().handlers:
+		return
 
 	logging.basicConfig(
 		level=logging.INFO,
