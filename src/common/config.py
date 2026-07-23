@@ -9,7 +9,7 @@ load_dotenv()
 class Config:
 	# Files
 	RAW_SOURCE_FILE = os.getenv("RAW_SOURCE_FILE", "data/users.csv")
-	RAW_INGESTED_FILE = os.getenv("RAW_INGESTED_FILE", "data/users_raw.csv")
+	RAW_INGESTED_FILE = os.getenv("RAW_INGESTED_FILE", "data/users_ingested.csv")
 	CLEANED_FILE = os.getenv("CLEANED_FILE", "data/users_cleaned.csv")
 
 	# AWS
@@ -27,3 +27,4 @@ class Config:
 	SNOWFLAKE_DATABASE = os.getenv("SNOWFLAKE_DATABASE")
 	SNOWFLAKE_SCHEMA = os.getenv("SNOWFLAKE_SCHEMA")
 	SNOWFLAKE_TABLE = os.getenv("SNOWFLAKE_TABLE")
+	SNOWFLAKE_ROLE = os.getenv("SNOWFLAKE_ROLE", "SYSADMIN")
