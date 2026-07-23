@@ -52,3 +52,10 @@ dist/
 docker-compose.override.yml
 
 .python-version
+
+# Airflow local state
+airflow/airflow.db
+airflow/airflow.db-shm
+airflow/airflow.db-wal
+airflow/airflow.cfg
+airflow/webserver_config.py

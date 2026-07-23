@@ -217,11 +217,32 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
+# Project logs
 logs/
 *.log
 
-.python-version
+# Local Python environments
+venv/
 airflow_venv/
+.python-version
+
+# Local environment / secrets
+.env
+
+# Generated pipeline data
+data/users_ingested.csv
+data/users_raw.csv
+data/users_cleaned.csv
+
+# Airflow local state
+airflow/airflow.db
+airflow/airflow.db-shm
+airflow/airflow.db-wal
+airflow/airflow.cfg
+airflow/webserver_config.py
+airflow/logs/
+
+# dbt generated artifacts
 dbt/target/
 dbt/logs/
 dbt/dbt_packages/
